@@ -1,6 +1,7 @@
 import datetime
 class Maquina:
-	def __init__(self, nome_maquina, preco_de_aquisicao_da_maquina, numero_de_serie, data_de_fabricacao, fabricante):
+	def __init__(self, id_da_maquina, nome_maquina, preco_de_aquisicao_da_maquina, numero_de_serie, data_de_fabricacao, fabricante):
+		self.id_da_maquina= id_da_maquina
 		self.nome_maquina = nome_maquina
 		self.preco_de_aquisicao_da_maquina = preco_de_aquisicao_da_maquina
 		self.numero_de_serie = numero_de_serie
@@ -72,7 +73,7 @@ class Maquina:
 		return fabricante
 
 	# 1.1 Registra maquina na empresa
-	def register_machine(empresa):
+	def register_machine(empresa, id_da_maquina):
 
 		# 1. Validar nome da maquina
 		nome_maquina = Maquina.validar_nome_maquina()
@@ -89,7 +90,8 @@ class Maquina:
 		# 5. Validar fabricante
 		fabricante = Maquina.validar_fabricante()
 
-		empresa.append(Maquina(nome_maquina, preco_de_aquisicao_da_maquina, numero_de_serie, data_de_fabricacao, fabricante))
+		empresa.append(Maquina(id_da_maquina, nome_maquina, preco_de_aquisicao_da_maquina, numero_de_serie, data_de_fabricacao, fabricante))
+		id_da_maquina += 1
 
 	# 1.2 Imprime uma lista de todas as maquinas registradas
 	def check_machines(empresa):
@@ -98,8 +100,15 @@ class Maquina:
 		else:
 			print('Lista de maquinas registradas:')
 			for x in range(len(empresa)):
-				#print(str(x + 1) + ': Nome da maquina: ' + empresa[x].nome_maquina + '; numero de serie: ' + empresa[x].numero_de_serie + '; fabricante: ' + empresa[x].fabricante)
-				print(empresa[x].__dict__)
+				print(str(x + 1) + ': Nome da maquina: ' + empresa[x].nome_maquina + '; numero de serie: ' + empresa[x].numero_de_serie + '; fabricante: ' + empresa[x].fabricante + '\n')
+				#print(empresa[x].__dict__)
+
+	# 2.3 Imprime informações da maquina do chamado
+	def check_info_machine_chamado(empresa, id_do_equipamento):
+		for x in range(len(empresa)):
+			if empresa[x].id_da_maquina == id_do_equipamento:
+				machine_info = '; nome da maquina: ' + empresa[x].nome_maquina + '; numero de serie: ' + empresa[x].numero_de_serie + '; fabricante: ' + empresa[x].fabricante
+				return machine_info
 
 	# 1.3 Editar maquina registrada
 	def edit_machines(empresa):

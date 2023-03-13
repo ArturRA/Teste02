@@ -1,5 +1,7 @@
 #import datetime
+import os
 from maquina import Maquina
+from chamado import Chamado
 
 
 
@@ -7,19 +9,27 @@ from maquina import Maquina
 if __name__ == "__main__":
 
 	empresa = list()
-	empresa.append(Maquina('testtest',5,'basic1','01/01/2023','artur'))
-	empresa.append(Maquina('testtest2',5,'basic1','01/01/2023','artur'))
+	id_da_maquina = 0
+	empresa.append(Maquina(999,'testtest',5,'basic1','01/01/2023','artur'))
+	empresa.append(Maquina(1000,'testtest2',5,'basic1','01/01/2023','artur'))
+	chamados = list()
+	chamados.append(Chamado('chamado 1','descicao 1',999,'01/03/2023'))
+	chamados.append(Chamado('chamado 2','descicao 2',1000,'10/03/2023'))
 
 	while True:
 		operacao  = input('Digite o numero da operacao desejada:\n' +
 					  '1. Registrar maquina.\n' +
 					  '2. Verificar maquinas registradas.\n' +
 					  '3. Editar maquina registrada.\n' +
-					  '4. Excluir maquina registrada.\n')
+					  '4. Excluir maquina registrada.\n' +
+					  '5. Registrar chamado.\n' +
+					  '6. Verificar chamados registrados.\n' +
+					  '7. Editar chamado registrado.\n' +
+					  '8. Excluir chamado registrados.\n' +
+					  '9. Terminar a execucao.\n')
 		match operacao:
 			case '1':
-				Maquina.register_machine(empresa)
-				#print(empresa[0].__dict__)
+				Maquina.register_machine(empresa, id_da_maquina)
 				continue
 			case '2':
 				Maquina.check_machines(empresa)
@@ -29,6 +39,18 @@ if __name__ == "__main__":
 				continue
 			case '4':
 				Maquina.delete_machine(empresa)
+				continue
+			case '5':
+				Chamado.register_chamado(empresa,chamados)
+				continue
+			case '6':
+				Chamado.check_chamados(empresa, chamados)
+				continue
+			case '7':
+				Chamado.edit_chamados(chamados)
+				continue
+			case '8':
+				Chamado.delete_chamado(empresa, chamados)
 				continue
 			case _:
 				break
