@@ -48,15 +48,18 @@ class Chamado:
 
 	def validar_data_de_abertura():
 		data_de_abertura = ''
+		hoje = datetime.date.today()
 		while True:
 			data_de_abertura = input('Digite a data de abertura no formato dd/mm/yyyy: ')
 			dia, mes, ano = data_de_abertura.split('/')
 			isValidDate = True
 			try:
 				datetime.datetime(int(ano), int(mes), int(dia))
+				data_de_abertura_date = datetime.date(int(ano), int(mes), int(dia))
 			except ValueError:
 				isValidDate = False
-			if(isValidDate):
+			# Input tem que ser tando valido como ser uma data antes da data retornada pelo metodo datetime.date.today()
+			if(isValidDate and hoje > data_de_abertura_date):
 				break
 			else:
 				print("Input date is not valid..")

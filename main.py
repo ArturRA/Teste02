@@ -1,5 +1,3 @@
-#import datetime
-import os
 from maquina import Maquina
 from chamado import Chamado
 
