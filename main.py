@@ -94,10 +94,13 @@ def register_machine(empresa):
 
 # 1.2 Imprime uma lista de todas as maquinas registradas
 def check_machines(empresa):
-	print('Lista de maquinas registradas:')
-	for x in range(len(empresa)):
-		#print(str(x + 1) + ': Nome da maquina: ' + empresa[x].nome_maquina + '; numero de serie: ' + empresa[x].numero_de_serie + '; fabricante: ' + empresa[x].fabricante)
-		print(empresa[x].__dict__)
+	if len(empresa) == 0:
+		print('Empresa nao possui maquinas registradas.')
+	else:
+		print('Lista de maquinas registradas:')
+		for x in range(len(empresa)):
+			#print(str(x + 1) + ': Nome da maquina: ' + empresa[x].nome_maquina + '; numero de serie: ' + empresa[x].numero_de_serie + '; fabricante: ' + empresa[x].fabricante)
+			print(empresa[x].__dict__)
 
 # 1.3 Editar maquina registrada
 def edit_machines(empresa):
@@ -145,18 +148,35 @@ def edit_machines(empresa):
 			case _:
 				break
 
+# 1.4 Excluir maquina registrada
+def delete_machine(empresa):
+	if len(empresa) == 0:
+		print('Empresa nao possui maquinas registradas.')
+	else:
+		check_machines(empresa)
+		maquina_para_editar = ''
+		while True:
+			maquina_para_editar = int(input('Digite o numero da maquina que deseja excluir: ')) - 1
+			if 0 <= maquina_para_editar < len(empresa):
+				break
+			else:
+				print('Input nao esta dentro do tamanho da lista.')
+				continue
+		empresa.pop(maquina_para_editar)
+
 
 if __name__ == "__main__":
 
 	empresa = list()
 	empresa.append(Maquina('testtest',5,'basic1','01/01/2023','artur'))
-	empresa.append(Maquina('testtest',5,'basic1','01/01/2023','artur'))
+	empresa.append(Maquina('testtest2',5,'basic1','01/01/2023','artur'))
 
 	while True:
 		operacao  = input('Digite o numero da operacao desejada:\n' +
 					  '1. Registrar maquina.\n' +
 					  '2. Verificar maquinas registradas.\n' +
-					  '3. Editar maquina registrada.\n')
+					  '3. Editar maquina registrada.\n' +
+					  '4. Excluir maquina registrada.\n')
 		match operacao:
 			case '1':
 				register_machine(empresa)
@@ -167,6 +187,9 @@ if __name__ == "__main__":
 				continue
 			case '3':
 				edit_machines(empresa)
+				continue
+			case '4':
+				delete_machine(empresa)
 				continue
 			case _:
 				break
