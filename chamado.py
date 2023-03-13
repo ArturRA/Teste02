@@ -39,7 +39,7 @@ def validar_id_do_equipamento(empresa):
 			print(str(x + 1) + ': Nome da maquina: ' + empresa[x].nome_maquina + '; numero de serie: ' + empresa[x].numero_de_serie + '; fabricante: ' + empresa[x].fabricante)
 		maquina_para_criar_chamado = ''
 		while True:
-			maquina_para_criar_chamado = int(input('Digite o numero da maquina que criar um chamado: ')) - 1
+			maquina_para_criar_chamado = int(input('Digite o numero da maquina que deseja criar um chamado: ')) - 1
 			if 0 <= maquina_para_criar_chamado < len(empresa):
 				break
 			else:
@@ -84,7 +84,7 @@ def register_chamado(empresa, chamados):
 	# 3. Validar id do equipamento
 	id_do_equipamento = validar_id_do_equipamento(empresa)
 
-	# 4. Validar data de fabricacao
+	# 4. Validar data de abertura
 	data_de_abertura = validar_data_de_abertura()
 
 	chamados.append(Chamado(titulo_do_chamado, descricao_do_chamado, id_do_equipamento, data_de_abertura))
@@ -120,11 +120,11 @@ def edit_chamados(chamados):
 				continue
 	while True:
 		operacao_de_edicao  = input('Digite o numero da operacao desejada:\n' +
-						'1. Editar o titulo do chamado.\n' +
-						'2. Editar a descricao do chamado.\n' +
-						'3. Editar a maquina do chamado.\n' +
-						'4. Editar data de abertura.\n' +
-						'5. Parar a edicao.\n')
+									'1. Editar o titulo do chamado.\n' +
+									'2. Editar a descricao do chamado.\n' +
+									'3. Editar a maquina do chamado.\n' +
+									'4. Editar data de abertura.\n' +
+									'5. Parar a edicao.\n')
 		match operacao_de_edicao:
 			case '1':
 				titulo_do_chamado = validar_titulo_do_chamado()
