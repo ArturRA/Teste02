@@ -47,7 +47,7 @@ if __name__ == "__main__":
 				check_chamados(empresa, chamados)
 				continue
 			case '7':
-				edit_chamados(chamados)
+				edit_chamados(empresa, chamados)
 				continue
 			case '8':
 				delete_chamado(empresa, chamados)

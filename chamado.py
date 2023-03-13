@@ -105,11 +105,11 @@ def check_chamados(empresa, chamados):
 					'; descricao do chamado: ' + chamados[x].descricao_do_chamado + '; dias que o chamado esta aberto: ' + dias_chamado_aberto(chamados[x].data_de_abertura))
 
 # 1.3 Editar chamados registrados
-def edit_chamados(chamados):
+def edit_chamados(empresa, chamados):
 	if len(chamados) == 0:
 		print('Empresa nao possui chamados registrados.')
 	else:
-		check_chamados(chamados)
+		check_chamados(empresa, chamados)
 		chamado_para_editar = ''
 		while True:
 			chamado_para_editar = int(input('Digite o numero do chamado que deseja editar: ')) - 1
@@ -135,7 +135,7 @@ def edit_chamados(chamados):
 				chamados[chamado_para_editar].descricao_do_chamado = descricao_do_chamado
 				continue
 			case '3':
-				id_do_equipamento = validar_id_do_equipamento()
+				id_do_equipamento = validar_id_do_equipamento(empresa)
 				chamados[chamado_para_editar].id_do_equipamento = id_do_equipamento
 				continue
 			case '4':
