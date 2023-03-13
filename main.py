@@ -1,8 +1,5 @@
-from maquina import Maquina
-from chamado import Chamado
-
-
-
+from maquina import *
+from chamado import *
 
 if __name__ == "__main__":
 
@@ -27,28 +24,28 @@ if __name__ == "__main__":
 					  '9. Terminar a execucao.\n')
 		match operacao:
 			case '1':
-				Maquina.register_machine(empresa, id_da_maquina)
+				register_machine(empresa, id_da_maquina)
 				continue
 			case '2':
-				Maquina.check_machines(empresa)
+				check_machines(empresa)
 				continue
 			case '3':
-				Maquina.edit_machines(empresa)
+				edit_machines(empresa)
 				continue
 			case '4':
-				Maquina.delete_machine(empresa)
+				delete_machine(empresa, chamados)
 				continue
 			case '5':
-				Chamado.register_chamado(empresa,chamados)
+				register_chamado(empresa,chamados)
 				continue
 			case '6':
-				Chamado.check_chamados(empresa, chamados)
+				check_chamados(empresa, chamados)
 				continue
 			case '7':
-				Chamado.edit_chamados(chamados)
+				edit_chamados(chamados)
 				continue
 			case '8':
-				Chamado.delete_chamado(empresa, chamados)
+				delete_chamado(empresa, chamados)
 				continue
 			case _:
 				break
