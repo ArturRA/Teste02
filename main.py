@@ -48,7 +48,7 @@ def register_machine(empresa):
 	# 4. Valida data de fabricacao
 	data_de_fabricacao = ''
 	while True:
-		data_de_fabricacao = input('Digite a data de fabricacao no formato dd/mm/yy: ')
+		data_de_fabricacao = input('Digite a data de fabricacao no formato dd/mm/yyyy: ')
 		dia, mes, ano = data_de_fabricacao.split('/')
 		isValidDate = True
 		try:
@@ -71,17 +71,29 @@ def register_machine(empresa):
 			break
 	empresa.append(Maquina(nome_maquina, preco_de_aquisicao_da_maquina, numero_de_serie, data_de_fabricacao, fabricante))
 
+# Imprime uma lista de todas as maquinas registradas
+def check_machines(empresa):
+	print('Lista de maquinas registradas:')
+	for x in range(len(empresa)):
+		print(str(x + 1) + ': Nome da maquina: ' + empresa[x].nome_maquina + '; numero de serie: ' + empresa[x].numero_de_serie + '; fabricante: ' + empresa[x].fabricante)
+
 if __name__ == "__main__":
 
 	empresa = list()
+	empresa.append(Maquina('testtest',5,'basic1','01/01/2023','artur'))
+	empresa.append(Maquina('testtest',5,'basic1','01/01/2023','artur'))
 
 	while True:
 		lang  = input('Digite o numero da operacao desejada:\n' +
-					  '1. Registrar maquina.\n')
+					  '1. Registrar maquina.\n' +
+					  '2. Verificar maquinas registradas.\n')
 		match lang:
-			case "1":
+			case '1':
 				register_machine(empresa)
 				#print(empresa[0].__dict__)
+				continue
+			case '2':
+				check_machines(empresa)
 				continue
 			case _:
 				break
