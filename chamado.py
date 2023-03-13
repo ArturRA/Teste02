@@ -34,10 +34,12 @@ def validar_id_do_equipamento(empresa):
 	if len(empresa) == 0:
 		print('Empresa nao possui maquinas registradas.')
 	else:
-		Maquina.check_machines(empresa)
+		print('Lista de maquinas registradas:')
+		for x in range(len(empresa)):
+			print(str(x + 1) + ': Nome da maquina: ' + empresa[x].nome_maquina + '; numero de serie: ' + empresa[x].numero_de_serie + '; fabricante: ' + empresa[x].fabricante)
 		maquina_para_criar_chamado = ''
 		while True:
-			maquina_para_criar_chamado = int(input('Digite o numero da maquina que deseja editar: ')) - 1
+			maquina_para_criar_chamado = int(input('Digite o numero da maquina que criar um chamado: ')) - 1
 			if 0 <= maquina_para_criar_chamado < len(empresa):
 				break
 			else:
@@ -95,14 +97,12 @@ def check_chamados(empresa, chamados):
 	else:
 		print('Lista de chamados registradas:')
 		for x in range(len(chamados)):
-			print(chamados[x].__dict__)
 			for y in range(len(empresa)):
 				if empresa[y].id_da_maquina == chamados[x].id_do_equipamento:
 					machine_info = '; nome da maquina: ' + empresa[y].nome_maquina + '; numero de serie: ' + empresa[y].numero_de_serie + '; fabricante: ' + empresa[y].fabricante
-					#break
+					break
 			print(str(x + 1) + ': Titulo do chamado: ' + chamados[x].titulo_do_chamado + machine_info +
 					'; descricao do chamado: ' + chamados[x].descricao_do_chamado + '; dias que o chamado esta aberto: ' + dias_chamado_aberto(chamados[x].data_de_abertura))
-			print('\n')
 
 # 1.3 Editar chamados registrados
 def edit_chamados(chamados):

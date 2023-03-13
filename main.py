@@ -9,6 +9,7 @@ if __name__ == "__main__":
 	empresa.append(Maquina(1000,'testtest2',5,'basic1','01/01/2023','artur'))
 	chamados = list()
 	chamados.append(Chamado('chamado 1','descicao 1',999,'01/03/2023'))
+	chamados.append(Chamado('chamado 1','descicao 1',999,'01/03/2023'))
 	chamados.append(Chamado('chamado 2','descicao 2',1000,'10/03/2023'))
 
 	while True:

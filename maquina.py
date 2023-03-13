@@ -25,7 +25,7 @@ def validar_preco_de_aquisicao_da_maquina():
 	preco_de_aquisicao_da_maquina = 0
 	while True:
 		try:
-			preco_de_aquisicao_da_maquina = float(input('Digite o preco de aquisicao da maquina(use "." ): '))
+			preco_de_aquisicao_da_maquina = float(input('Digite o preco de aquisicao da maquina(use "." como divisor da casa decimal): '))
 		except ValueError:
 			print('Input nao e um numero.')
 			continue
@@ -104,15 +104,7 @@ def check_machines(empresa):
 	else:
 		print('Lista de maquinas registradas:')
 		for x in range(len(empresa)):
-			print(str(x + 1) + ': Nome da maquina: ' + empresa[x].nome_maquina + '; numero de serie: ' + empresa[x].numero_de_serie + '; fabricante: ' + empresa[x].fabricante + '\n')
-			#print(empresa[x].__dict__)
-
-# 2.3 Imprime informações da maquina do chamado
-#def check_info_machine_chamado(empresa, id_do_equipamento):
-#	for x in range(len(empresa)):
-#		if empresa[x].id_da_maquina == id_do_equipamento:
-#			machine_info = '; nome da maquina: ' + empresa[x].nome_maquina + '; numero de serie: ' + empresa[x].numero_de_serie + '; fabricante: ' + empresa[x].fabricante
-#			return machine_info
+			print(str(x + 1) + ': Nome da maquina: ' + empresa[x].nome_maquina + '; numero de serie: ' + empresa[x].numero_de_serie + '; fabricante: ' + empresa[x].fabricante)
 
 # 1.3 Editar maquina registrada
 def edit_machines(empresa):
@@ -174,9 +166,13 @@ def delete_machine(empresa, chamados):
 			else:
 				print('Input nao esta dentro do tamanho da lista.')
 				continue
-		for x in range(len(chamados)):
-			if chamados[x].id_do_equipamento == empresa[maquina_para_deletar].id_da_maquina:
-				chamados.pop(x)
-				break
+		verificar_x_vezes = len(chamados)
+		while verificar_x_vezes > 0:
+			for x in range(len(chamados)):
+				if chamados[x].id_do_equipamento == empresa[maquina_para_deletar].id_da_maquina:
+					chamados.pop(x)
+					break
+			verificar_x_vezes -=1
+
 		empresa.pop(maquina_para_deletar)
 		
