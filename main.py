@@ -5,12 +5,16 @@ if __name__ == "__main__":
 
 	empresa = list()
 	id_da_maquina = 0
-	empresa.append(Maquina(999,'testtest',5,'basic1','01/01/2023','artur'))
-	empresa.append(Maquina(1000,'testtest2',5,'basic1','01/01/2023','artur'))
+	#empresa.append(Maquina(999,'testtest',5,'basic1','01/01/2023','artur'))
+	#empresa.append(Maquina(1000,'testtest2',5,'basic1','01/01/2023','artur'))
 	chamados = list()
-	chamados.append(Chamado('chamado 1','descicao 1',999,'01/03/2023'))
-	chamados.append(Chamado('chamado 1','descicao 1',999,'01/03/2023'))
-	chamados.append(Chamado('chamado 2','descicao 2',1000,'10/03/2023'))
+	#chamados.append(Chamado('chamado 1','descicao 1',999,'01/03/2023'))
+	#chamados.append(Chamado('chamado 1','descicao 1',999,'01/03/2023'))
+	#chamados.append(Chamado('chamado 1','descicao 1',999,'01/03/2023'))
+	#chamados.append(Chamado('chamado 1','descicao 1',999,'01/03/2023'))
+	#chamados.append(Chamado('chamado 1','descicao 1',999,'01/03/2023'))
+	#chamados.append(Chamado('chamado 1','descicao 1',999,'01/03/2023'))
+	#chamados.append(Chamado('chamado 2','descicao 2',1000,'10/03/2023'))
 
 	while True:
 		operacao  = input('Digite o numero da operacao desejada:\n' +

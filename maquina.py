@@ -166,13 +166,16 @@ def delete_machine(empresa, chamados):
 			else:
 				print('Input nao esta dentro do tamanho da lista.')
 				continue
-		verificar_x_vezes = len(chamados)
-		while verificar_x_vezes > 0:
+		
+		while True:
+			tamanho_list = len(chamados)
+			posicao_atual = ''
 			for x in range(len(chamados)):
+				posicao_atual = x
 				if chamados[x].id_do_equipamento == empresa[maquina_para_deletar].id_da_maquina:
 					chamados.pop(x)
 					break
-			verificar_x_vezes -=1
-
+			if posicao_atual == tamanho_list - 1:
+				break
 		empresa.pop(maquina_para_deletar)
 		
